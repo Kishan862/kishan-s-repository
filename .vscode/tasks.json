@@ -1,0 +1,21 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Compile C++",
+            "type": "shell",
+            "command": "clang++ -std=c++17 \"${file}\" -o \"${fileDirname}/a.out\"",
+            "problemMatcher": "$gcc"
+        },
+        {
+            "label": "Run CP",
+            "type": "shell",
+            "command": "\"${fileDirname}/a.out\" < \"${fileDirname}/input.txt\" > \"${fileDirname}/output.txt\"",
+            "dependsOn": ["Compile C++"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
