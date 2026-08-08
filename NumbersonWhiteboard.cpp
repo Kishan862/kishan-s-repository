@@ -29,7 +29,16 @@ const ll INF = 1e18;
 void solve() {
     ll n;
     cin >> n;
-    cout << n << '\n';
+    vector<pair<int, int>> ans;
+    int cur = n;
+    for(int i = n-1; i >= 1; i--){
+        ans.pb({cur, i});
+        cur = (cur+i+1)/2;
+    }
+    cout << cur << '\n';
+    for (auto &[a, b] : ans) {
+        cout << a << ' ' << b << '\n';
+    }
 }
 
 int main() {

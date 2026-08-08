@@ -27,9 +27,32 @@ const ll INF = 1e18;
 #define all(x) (x).begin(), (x).end()
 
 void solve() {
-    ll n;
-    cin >> n;
-    cout << n << '\n';
+    ll n, k;
+    cin >> n >> k;
+
+    string s;
+    cin >> s;
+
+    vector<int> prefix(n, 0);
+    if(s[0] == 'W') prefix[0]++;
+    for(int i = 1; i < n; i++){
+        if(s[i] == 'W'){
+            prefix[i] = prefix[i-1] + 1;
+        }
+        else{
+            prefix[i] = prefix[i-1];
+        }
+    }
+    
+    int steps = prefix[k-1];
+    int minSteps = steps;
+    for(int i = 1; i < n; i++){
+        if(k > (n-i)) break;
+        steps = prefix[k+i-1] - prefix[i-1];
+        minSteps = min(steps, minSteps);
+    }
+
+    cout << minSteps << '\n';
 }
 
 int main() {

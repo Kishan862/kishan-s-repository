@@ -25,11 +25,28 @@ const ll INF = 1e18;
 #define fast_io ios::sync_with_stdio(false); cin.tie(NULL);
 #define pb push_back
 #define all(x) (x).begin(), (x).end()
-
+bool isPrime(ll x){
+    for(ll i = 2; i * i <= x; i++){
+        if(x % i == 0){
+            return false;
+        }
+    }
+    return true;
+}
 void solve() {
     ll n;
     cin >> n;
-    cout << n << '\n';
+    bool flag = isPrime(n+1);
+
+    if(flag){
+        cout << "YES" << '\n';
+    }
+    else{
+        cout << "NO" << '\n';
+    }
+
+
+    
 }
 
 int main() {

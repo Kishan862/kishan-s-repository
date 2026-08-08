@@ -27,9 +27,20 @@ const ll INF = 1e18;
 #define all(x) (x).begin(), (x).end()
 
 void solve() {
-    ll n;
-    cin >> n;
-    cout << n << '\n';
+    string s;
+    cin >> s;
+    int zeroes = 0, ones = 0;
+    for(auto ch : s){
+        if(ch == '0') zeroes++;
+        else ones++;
+    }
+    int moves = min(ones, zeroes);
+    if(moves & 1){
+        cout << "DA" << '\n';
+    }
+    else{
+        cout << "NET" << '\n';
+    }
 }
 
 int main() {

@@ -27,9 +27,26 @@ const ll INF = 1e18;
 #define all(x) (x).begin(), (x).end()
 
 void solve() {
-    ll n;
-    cin >> n;
-    cout << n << '\n';
+    ll n, x;
+    cin >> n >> x;
+    ll cnt = 0;
+    ll y; cin >> y;
+    ll l_pre = y-x, u_pre = y+x;
+    for(ll i = 1; i < n; i++){
+        ll y; cin >> y;
+        ll l_curr = y-x, u_curr = y+x;
+        if(max(l_pre, l_curr) > min(u_pre, u_curr)){
+            cnt++;
+            l_pre = l_curr;
+            u_pre = u_curr;
+        }
+        else{
+            l_pre = max(l_pre, l_curr);
+            u_pre = min(u_curr, u_pre);
+        }
+        
+    }
+    cout << cnt <<endl;
 }
 
 int main() {

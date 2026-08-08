@@ -29,7 +29,23 @@ const ll INF = 1e18;
 void solve() {
     ll n;
     cin >> n;
-    cout << n << '\n';
+    vector<ll> a(n), b(n);
+
+    for(int i = 0; i < n; i++) cin >> a[i];
+    for(int i = 0; i < n; i++) cin >> b[i];
+
+    sort(all(a));
+    sort(all(b), greater<>());
+    ll totalWays = 1;
+    for(int i = 0; i < n; i++){
+        ll temp = upper_bound(a.begin(), a.end(), b[i]) - a.begin();
+        ll cnt = n - temp;
+        totalWays  = totalWays * max(cnt-i, 0LL) % MOD;
+    }
+
+    cout << totalWays << '\n';
+
+
 }
 
 int main() {

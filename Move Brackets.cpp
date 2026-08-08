@@ -29,7 +29,22 @@ const ll INF = 1e18;
 void solve() {
     ll n;
     cin >> n;
-    cout << n << '\n';
+    string s;
+    cin >> s;
+
+    int sum = 0;
+    int ans = 0;
+
+    for(auto br : s){
+        if(br == '(') sum++;
+        else sum--;
+        if(sum < 0){
+            ans++;
+            sum = 0;
+        }
+    }
+
+    cout << ans <<'\n';
 }
 
 int main() {

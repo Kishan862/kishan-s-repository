@@ -27,9 +27,26 @@ const ll INF = 1e18;
 #define all(x) (x).begin(), (x).end()
 
 void solve() {
-    ll n;
-    cin >> n;
-    cout << n << '\n';
+    ll n, x;
+    cin >> n >> x;
+    vector<ll> a(n);
+    ll totalSum = 0;
+    for(int i = 0; i < n; i++){
+        cin >> a[i];
+
+        totalSum += a[i];
+    }
+
+    ll minBeauty = (totalSum + x - 1) / x;
+    ll maxBeauty = 0;
+
+    for(auto y : a){
+        maxBeauty += (y + x - 1) / x;
+    }
+
+    cout << minBeauty << " " << maxBeauty << '\n';
+
+
 }
 
 int main() {

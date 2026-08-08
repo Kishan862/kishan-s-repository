@@ -27,9 +27,30 @@ const ll INF = 1e18;
 #define all(x) (x).begin(), (x).end()
 
 void solve() {
-    ll n;
-    cin >> n;
-    cout << n << '\n';
+    long long w, h;
+    cin >> w >> h;
+
+    long long ans = 0;
+
+    for (int side = 0; side < 4; side++) {
+        int k;
+        cin >> k;
+
+        vector<long long> a(k);
+        for (int i = 0; i < k; i++) {
+            cin >> a[i];
+        }
+
+        long long base = a.back() - a.front();
+
+        if (side < 2) {          
+            ans = max(ans, base * h);
+        } else {                
+            ans = max(ans, base * w);
+        }
+    }
+
+    cout << ans << '\n';
 }
 
 int main() {

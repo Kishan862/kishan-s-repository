@@ -27,9 +27,26 @@ const ll INF = 1e18;
 #define all(x) (x).begin(), (x).end()
 
 void solve() {
-    ll n;
-    cin >> n;
-    cout << n << '\n';
+    ll n, c;
+    cin >> n >> c;
+    vector<ll> a(n);
+    int cntPos = 0;
+    for(int i = 0; i < n; i++) {
+        int x;
+        cin >> x;
+        a[i] = x-c;
+        if(a[i] > 0) cntPos++;
+    }
+    sort(a.begin(), a.end(), greater<ll>());
+    int m = (n+1)/2;
+    int k = max(m, cntPos);
+
+    ll score = 0;
+    for(int i = 0; i < k; i++) score += a[i];
+
+    cout << score << '\n';
+    
+    
 }
 
 int main() {

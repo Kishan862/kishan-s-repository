@@ -29,7 +29,31 @@ const ll INF = 1e18;
 void solve() {
     ll n;
     cin >> n;
-    cout << n << '\n';
+    vector<ll> a(n), b, c;
+
+    for(int i = 0; i < n; i++){
+        cin >> a[i];
+    }
+    ll mx = *max_element(all(a));
+    for(int i = 0; i < n; i++){
+        if(a[i] != mx) b.pb(a[i]);
+        else c.pb(a[i]);
+    }
+    if(b.size() == 0){
+        cout << -1 << '\n';
+        return;
+    }
+    cout << b.size() << " " << c.size() <<'\n';
+    for(auto p : b){
+        cout << p << " ";
+    }
+    cout << '\n';
+    for(auto q : c){
+        cout << q << " ";
+    }
+    cout << '\n';
+    
+    
 }
 
 int main() {

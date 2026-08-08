@@ -29,13 +29,20 @@ const ll INF = 1e18;
 void solve() {
     ll n;
     cin >> n;
-    cout << n << '\n';
+    vector<ll> a(n);
+    for(int i = 0; i < n; i++) cin >> a[i];
+    sort(all(a));
+    ll med = a[n/2];
+    ll cost = 0;
+    for(auto x : a){
+        cost += abs(med - x);
+    }
+    cout << cost << '\n';
 }
 
 int main() {
     fast_io;
     int t = 1;
-    cin >> t;
     while (t--) solve();
     return 0;
 }

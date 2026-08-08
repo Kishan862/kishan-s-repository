@@ -27,9 +27,30 @@ const ll INF = 1e18;
 #define all(x) (x).begin(), (x).end()
 
 void solve() {
-    ll n;
-    cin >> n;
-    cout << n << '\n';
+    ll n, m;
+    cin >> n >> m;
+    int negs = 0;
+    int totalSum = 0;
+    int mn = 101;
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < m; j++){
+            int x;
+            cin >> x;
+            if(x < 0){
+                negs++;
+                x *= -1;
+            }
+            mn = min(mn, x);
+            totalSum += x;
+        }
+    }
+
+    if(negs & 1){
+        cout << totalSum - 2 * mn << '\n';
+    }
+    else{
+        cout << totalSum << '\n';
+    }
 }
 
 int main() {

@@ -29,7 +29,17 @@ const ll INF = 1e18;
 void solve() {
     ll n;
     cin >> n;
-    cout << n << '\n';
+    
+    vector<int> a(n);
+
+    for(int i = 0; i < n; i++) cin >> a[i];
+
+    sort(all(a), greater<int>());
+
+    for(int i = 0; i < n; i++){
+        cout << a[i] << " ";
+    }
+    cout << '\n';
 }
 
 int main() {

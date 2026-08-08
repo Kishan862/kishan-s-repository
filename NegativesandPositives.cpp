@@ -29,7 +29,28 @@ const ll INF = 1e18;
 void solve() {
     ll n;
     cin >> n;
-    cout << n << '\n';
+    vector<ll> a(n);
+
+    int negs = 0;
+    ll totalSum = 0;
+    for(int i = 0; i < n; i++){
+        cin >> a[i];
+        if(a[i] < 0){
+            negs++;
+            a[i] *= -1LL;
+        }
+
+        totalSum += a[i];
+
+    }
+    if(negs & 1){
+        ll mn = *min_element(all(a));
+        cout << totalSum - 2 * mn << '\n';
+    }
+    else{
+         cout << totalSum << '\n';
+    }
+       
 }
 
 int main() {

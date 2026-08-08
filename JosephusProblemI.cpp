@@ -26,16 +26,44 @@ const ll INF = 1e18;
 #define pb push_back
 #define all(x) (x).begin(), (x).end()
 
+class Node {
+    public:
+        int data;
+        Node* next;
+
+        Node(int val) {
+            data = val;
+            next = nullptr;
+        }
+};
+
+class LinkedList {
+    private:
+        Node* head;
+        
+    public:
+        LinkedList() {
+            head = nullptr;
+        }
+
+        void insert(int val);
+
+        void makeCircular();
+
+        void josephusOrder();
+
+        void display();
+};
+
 void solve() {
     ll n;
     cin >> n;
-    cout << n << '\n';
+    
 }
 
 int main() {
     fast_io;
     int t = 1;
-    cin >> t;
     while (t--) solve();
     return 0;
 }

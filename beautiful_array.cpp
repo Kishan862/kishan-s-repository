@@ -27,9 +27,27 @@ const ll INF = 1e18;
 #define all(x) (x).begin(), (x).end()
 
 void solve() {
-    ll n;
-    cin >> n;
-    cout << n << '\n';
+    ll n, k, b, s;
+    cin >> n >> k >> b >>s;
+    ll min_s = k*b;
+    ll max_s = k*b + n*(k-1);
+    if(s < min_s || s > max_s){
+        cout << -1 << endl;
+    }
+    else{
+        vector<ll> ans(n, 0);
+        ans[0] = k*b;
+        s -= k*b;
+        for(ll i = 0; i < n; i++){
+            ll add = min(k-1, s);
+            ans[i] += add;
+            s -= add;
+        }
+        for(ll x : ans){
+            cout << x << " ";
+        }
+        cout << endl;
+    }
 }
 
 int main() {

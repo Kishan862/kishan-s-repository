@@ -29,7 +29,23 @@ const ll INF = 1e18;
 void solve() {
     ll n;
     cin >> n;
-    cout << n << '\n';
+    vector<ll> a(n);
+    for(int i = 0; i < n; i++){
+        cin >> a[i];
+    }
+    ll ans = a[0], curr = a[0];
+    for(int i = 1; i < n; i++){
+        if(abs(a[i])%2 != abs(a[i-1])%2){
+            curr = max(a[i], curr+a[i]);
+        }
+        else{
+            curr = a[i];
+        }
+        ans = max(ans, curr);
+    }
+
+    cout << ans << '\n';
+
 }
 
 int main() {

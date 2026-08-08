@@ -25,11 +25,30 @@ const ll INF = 1e18;
 #define fast_io ios::sync_with_stdio(false); cin.tie(NULL);
 #define pb push_back
 #define all(x) (x).begin(), (x).end()
-
+vector<int> minMax(ll n){
+    int mn = 10, mx = -1;
+    while(n){
+        int dig = n % 10;
+        mn = min(mn, dig);
+        mx = max(mx, dig);
+        n /= 10;
+    }
+    return {mn, mx};
+}
 void solve() {
-    ll n;
-    cin >> n;
-    cout << n << '\n';
+    ll a, k;
+    cin >> a >> k;
+    k--;
+    while(k--){
+        vector<int> temp = minMax(a);
+        if(temp[0] == 0){
+            cout << a << '\n';
+            return;
+        }
+        a = a + temp[0] * temp[1];
+    }
+    cout << a << '\n';
+
 }
 
 int main() {

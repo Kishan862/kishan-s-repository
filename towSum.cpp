@@ -27,15 +27,28 @@ const ll INF = 1e18;
 #define all(x) (x).begin(), (x).end()
 
 void solve() {
-    ll n;
-    cin >> n;
-    cout << n << '\n';
+    ll n, x;
+    cin >> n >> x;
+    vector<int> a(n);
+    for(int i = 0; i < n; i++){
+        cin >> a[i];
+    }
+    map<int, int> mp;
+    for(int i = 0; i < n; i++){
+        int rem = x - a[i];
+        if(mp.find(rem) != mp.end()){
+            cout << mp[rem] + 1 << " " << i + 1 << '\n';
+            return;
+        }
+        mp[a[i]] = i;
+    }
+
+    cout << "IMPOSSIBLE" << '\n';
 }
 
 int main() {
     fast_io;
     int t = 1;
-    cin >> t;
     while (t--) solve();
     return 0;
 }

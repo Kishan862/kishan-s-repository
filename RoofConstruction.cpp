@@ -29,7 +29,23 @@ const ll INF = 1e18;
 void solve() {
     ll n;
     cin >> n;
-    cout << n << '\n';
+    n--;
+    ll msb = log2(n);
+    vector<ll> ans;
+    ll num = pow(2, msb) - 1;
+    while(num >= 0){
+        ans.pb(num);
+        num--;
+    }
+    num = pow(2, msb);
+    while(num <= n){
+        ans.pb(num);
+        num++;
+    }
+    for(int x : ans){
+        cout << x << " ";
+    }
+    cout << endl;
 }
 
 int main() {

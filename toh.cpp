@@ -26,16 +26,21 @@ const ll INF = 1e18;
 #define pb push_back
 #define all(x) (x).begin(), (x).end()
 
-void solve() {
-    ll n;
-    cin >> n;
-    cout << n << '\n';
+void TOH(int n, int a, int b, int c){
+    if(n == 0) return;
+
+    TOH(n-1, a, c, b);
+    cout << a << " " << c << '\n';
+    TOH(n-1, b, a, c);
 }
 
 int main() {
     fast_io;
-    int t = 1;
-    cin >> t;
-    while (t--) solve();
+    ll n;
+    cin >> n;
+
+    cout << (1 << n)-1 << '\n';
+    TOH(n, 1, 2, 3);
+
     return 0;
 }

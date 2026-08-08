@@ -11,7 +11,7 @@
 #include <deque>
 #include <string>
 #include <cstring>
-#include <limits>
+#include <climits>
 #include <numeric>
 
 using namespace std;
@@ -25,11 +25,23 @@ const ll INF = 1e18;
 #define fast_io ios::sync_with_stdio(false); cin.tie(NULL);
 #define pb push_back
 #define all(x) (x).begin(), (x).end()
-
+int gcd(int a, int b){
+    if(b == 0) return a;
+    return gcd(b, a%b);
+}
 void solve() {
     ll n;
     cin >> n;
-    cout << n << '\n';
+    vector<ll> a(n);
+    for(int i = 0; i < n; i++) cin >> a[i];
+    int ans = 0;
+    for(int i = 0; i < n; i++){
+        if(a[i] != (i+1)){
+            int curr = abs(a[i] - i - 1);
+            ans = gcd(curr, ans);
+        }
+    }
+    cout << ans << '\n';
 }
 
 int main() {

@@ -27,9 +27,22 @@ const ll INF = 1e18;
 #define all(x) (x).begin(), (x).end()
 
 void solve() {
-    ll n;
-    cin >> n;
-    cout << n << '\n';
+    ll n; char c;
+    cin >> n >> c;
+    string s;
+    cin >> s;
+    s += s;
+    ll ind = -1;
+    ll ans = 0;
+    for(int i = 2*n-1; i >=0 ;i--){
+        if(s[i] == 'g') ind = i;
+        if(s[i] == c){
+            ll d = ind - i;
+            ans = max(ans, d);
+        }
+    }
+    cout << ans << endl;
+
 }
 
 int main() {

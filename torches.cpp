@@ -27,9 +27,13 @@ const ll INF = 1e18;
 #define all(x) (x).begin(), (x).end()
 
 void solve() {
-    ll n;
-    cin >> n;
-    cout << n << '\n';
+    ll x, y, k;
+    cin >> x >> y >> k;
+    ll p = ceil(1.0*k*y/(x-1));
+    ll b = 1 - p + p*x - k*y;
+    ll q = ceil(1.0*(k-b)/(x-1));
+    ll ans = k + p + q;
+    cout << ans << endl;
 }
 
 int main() {

@@ -27,9 +27,22 @@ const ll INF = 1e18;
 #define all(x) (x).begin(), (x).end()
 
 void solve() {
-    ll n;
-    cin >> n;
-    cout << n << '\n';
+    ll a, b, c;
+    cin >> a >> b >> c;
+    if(a > b){
+        cout << "First" << '\n';
+    }
+    else if(b > a){
+        cout << "Second" << '\n';
+    }
+    else{
+        if(c & 1){
+            cout << "First" << '\n';
+        }
+        else{
+            cout << "Second" << '\n';
+        }
+    }
 }
 
 int main() {

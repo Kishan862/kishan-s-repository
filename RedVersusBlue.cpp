@@ -27,9 +27,32 @@ const ll INF = 1e18;
 #define all(x) (x).begin(), (x).end()
 
 void solve() {
-    ll n;
-    cin >> n;
-    cout << n << '\n';
+    ll n, r, b;
+    cin >> n >> r >> b;
+    string ans = "";
+    int d = r / (b+1);
+    int rem = r % (b+1);
+
+    int p = 1;
+    while(p <= b+1){
+        int q = 0;
+        string part = "";
+        while(q < d){
+            part += 'R';
+            q++;
+        }
+        if(rem > 0){
+            part += 'R';
+            rem--;
+        }
+        if(p != b+1) part += 'B';
+        ans += part;
+        p++; 
+    }
+
+    cout << ans << '\n';
+
+   
 }
 
 int main() {

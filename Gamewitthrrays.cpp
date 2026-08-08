@@ -11,7 +11,7 @@
 #include <deque>
 #include <string>
 #include <cstring>
-#include <limits>
+#include <climits>
 #include <numeric>
 
 using namespace std;
@@ -29,7 +29,32 @@ const ll INF = 1e18;
 void solve() {
     ll n;
     cin >> n;
-    cout << n << '\n';
+    vector<int> sec_min;
+    int min_first_min = INT_MAX;
+    for(int i = 0; i < n; i++){
+        int m;
+        cin >> m;
+        vector<int> a(m);
+        for(int j = 0; j < m; j++){
+            cin >> a[j];
+        }
+    
+        sort(all(a));
+        sec_min.pb(a[1]);
+        min_first_min = min(min_first_min, a[0]);
+    }
+
+    sort(all(sec_min));
+    ll total_sec_min = 0;
+    for(auto x : sec_min) total_sec_min += x;
+
+    ll lowest_sec_min = sec_min[0];
+    ll answer = min_first_min + total_sec_min - lowest_sec_min;
+
+    cout << answer << '\n';
+
+    
+
 }
 
 int main() {

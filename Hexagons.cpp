@@ -26,16 +26,13 @@ const ll INF = 1e18;
 #define pb push_back
 #define all(x) (x).begin(), (x).end()
 
-void solve() {
-    ll n;
-    cin >> n;
-    cout << n << '\n';
-}
-
 int main() {
     fast_io;
-    int t = 1;
-    cin >> t;
-    while (t--) solve();
+    int n;
+    cin >> n;
+
+    ll ans = 3LL * n * (n + 1) + 1; 
+
+    cout << ans << '\n';
     return 0;
 }

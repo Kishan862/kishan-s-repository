@@ -27,9 +27,28 @@ const ll INF = 1e18;
 #define all(x) (x).begin(), (x).end()
 
 void solve() {
-    ll n;
-    cin >> n;
-    cout << n << '\n';
+    ll n, k;
+    cin >> n >> k;
+
+    string s;
+    cin >> s;
+
+    if(2*k > n){
+        cout << -1 << '\n';
+        return;
+    }
+
+    int ans = 0;
+    for(int i = 0; i < k; i++){
+        if(s[i] != 'R') ans++;
+    }
+    for(int i = n-k; i < n; i++){
+        if(s[i] != 'L') ans++;
+    }
+    
+    cout << ans <<'\n';
+
+
 }
 
 int main() {

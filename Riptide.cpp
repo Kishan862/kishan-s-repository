@@ -27,9 +27,23 @@ const ll INF = 1e18;
 #define all(x) (x).begin(), (x).end()
 
 void solve() {
-    ll n;
-    cin >> n;
-    cout << n << '\n';
+    ll a , b, c;
+    cin >> a >> b >> c;
+    if(a == b || b == c || a == c){
+        cout << 0 << '\n';
+        return;
+    }
+    int mn = min({a, b, c});
+
+    int mx = max({a, b , c});
+    
+    int inter = -1;
+    if((mn == a && mx == b) || (mx == a && mn == b)) inter = c;
+    else if((mn == a && mx == c) || (mx == a && mn == c))  inter = b;
+    else inter = a;
+
+    int ans = min((mx-inter), (inter-mn));
+    cout << ans << '\n';
 }
 
 int main() {

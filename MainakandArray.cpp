@@ -29,7 +29,21 @@ const ll INF = 1e18;
 void solve() {
     ll n;
     cin >> n;
-    cout << n << '\n';
+    vector<int> a(n);
+    for(int i = 0; i < n; i++){
+        cin >> a[i];
+    }
+    int answer = a[n-1]-a[0];
+    for(int i = 1; i < n; i++){
+        answer = max(answer, a[i]-a[0]);
+    }
+    for(int i = 0; i < n-1; i++){
+        answer = max(answer, a[n-1]-a[i]);
+    }
+    for(int i = 0; i < n-1; i++){
+        answer = max(answer, a[i]-a[i+1]);
+    }
+    cout << answer << '\n';
 }
 
 int main() {

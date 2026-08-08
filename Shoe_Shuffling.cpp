@@ -29,7 +29,15 @@ const ll INF = 1e18;
 void solve() {
     ll n;
     cin >> n;
-    cout << n << '\n';
+    set<ll> st;
+    ll t = n;
+    vector<ll> shoe(n);
+    for(int i = 0; i < n; i++){
+        cin >> shoe[i];
+    }
+    
+
+    
 }
 
 int main() {

@@ -27,15 +27,31 @@ const ll INF = 1e18;
 #define all(x) (x).begin(), (x).end()
 
 void solve() {
-    ll n;
-    cin >> n;
-    cout << n << '\n';
+    ll n, x;
+    cin >> n >> x;
+    vector<int> weights(n);
+    for(int i = 0; i < n; i++) cin >> weights[i];
+    sort(all(weights));
+    int l = 0, r = n-1;
+    int ans = 0;
+    while (r >= l){
+        if(weights[r] + weights[l] <= x){
+            r--;
+            l++;
+        }
+        else{
+            r--;
+        }
+        ans++;
+        
+    }
+    cout << ans << '\n';
+    
 }
 
 int main() {
     fast_io;
     int t = 1;
-    cin >> t;
     while (t--) solve();
     return 0;
 }

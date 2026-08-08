@@ -29,7 +29,22 @@ const ll INF = 1e18;
 void solve() {
     ll n;
     cin >> n;
-    cout << n << '\n';
+    string s;
+    cin >> s;
+    map<char, int> freq;
+    vector<int> distinct(n, 0);
+    int count = 0;
+    for(int i = 0; i < n; i++){
+        freq[s[i]]++;
+        if(freq[s[i]] == 1){
+            count++;
+        }
+        distinct[i] = count;
+    }
+    int ans = 0;
+    for(auto it : distinct) ans += it;
+
+    cout << ans << endl;
 }
 
 int main() {

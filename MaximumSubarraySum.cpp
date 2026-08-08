@@ -11,7 +11,7 @@
 #include <deque>
 #include <string>
 #include <cstring>
-#include <limits>
+#include <climits>
 #include <numeric>
 
 using namespace std;
@@ -29,13 +29,21 @@ const ll INF = 1e18;
 void solve() {
     ll n;
     cin >> n;
-    cout << n << '\n';
+    vector<int> a(n);
+    for(int i = 0; i < n; i++) cin >> a[i];
+    ll currSum = 0;
+    ll maxSum = LLONG_MIN;
+    for(auto x : a){
+        currSum += x;
+        maxSum = max(maxSum, currSum);
+        if(currSum < 0) currSum = 0;
+    }
+    cout << maxSum << '\n';
 }
 
 int main() {
     fast_io;
     int t = 1;
-    cin >> t;
     while (t--) solve();
     return 0;
 }

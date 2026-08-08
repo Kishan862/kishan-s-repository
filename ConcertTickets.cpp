@@ -27,15 +27,31 @@ const ll INF = 1e18;
 #define all(x) (x).begin(), (x).end()
 
 void solve() {
-    ll n;
-    cin >> n;
-    cout << n << '\n';
+    ll n, m;
+    cin >> n >> m;
+    multiset<ll> price;
+    for(int i = 0; i < n; i++){
+        ll x; 
+        cin >> x;
+        price.insert(x);
+    }
+    while(m--){
+        ll x;
+        cin >> x;
+        auto it = price.upper_bound(x);
+        if(it == price.begin()){
+            cout << -1 << '\n';
+        }
+        else{
+            --it;
+            cout << *it << '\n';
+            price.erase(it);
+        }
+    }
 }
 
 int main() {
     fast_io;
-    int t = 1;
-    cin >> t;
-    while (t--) solve();
+    solve();
     return 0;
 }

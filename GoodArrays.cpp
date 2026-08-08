@@ -29,7 +29,16 @@ const ll INF = 1e18;
 void solve() {
     ll n;
     cin >> n;
-    cout << n << '\n';
+    vector<int> a(n);
+    for(int i = 0; i < n; i++){
+        cin >> a[i];
+    }
+    int cnt = 0;
+    for(int i = 0; i < n-1; i++){
+        if(a[i] % 2 == 1 && a[i+1] % 2 == 1) cnt++;
+        else if(a[i] % 2 == 0 && a[i+1] % 2 == 0) cnt++;
+    }
+    cout << cnt << '\n';
 }
 
 int main() {

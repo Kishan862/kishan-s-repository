@@ -27,11 +27,20 @@ const ll INF = 1e18;
 #define all(x) (x).begin(), (x).end()
 
 void solve() {
-    ll n;
-    cin >> n;
-    cout << n << '\n';
-}
+    ll a, b;
+    cin >> a >> b;
+    
+    ll d = abs(a-b);
 
+    if(d == 0){
+        cout << 0 << " " << 0 << '\n';
+        return;
+    }
+
+    cout << d << " " << min(b%d, (d-a%d)) << '\n';
+   
+}
+ 
 int main() {
     fast_io;
     int t = 1;

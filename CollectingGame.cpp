@@ -14,6 +14,7 @@
 #include <limits>
 #include <numeric>
 
+
 using namespace std;
 
 using ll = long long;
@@ -29,7 +30,39 @@ const ll INF = 1e18;
 void solve() {
     ll n;
     cin >> n;
-    cout << n << '\n';
+    vector<pair<ll, ll>> a(n);
+    for(int i = 0; i < n; i++){
+        int x;
+        cin >> x;
+        a[i] = {x, i};
+    }
+    sort(all(a));
+    vector<ll> prefixSum(n);
+    prefixSum[0] = a[0].first;
+    for(int i = 1; i < n; i++){ 
+        prefixSum[i] = a[i].first + prefixSum[i-1];
+    }
+   
+    vector<ll> dp(n);
+
+    dp[n-1] = n-1;
+
+    for(int i = n-2; i >= 0; i--){
+        if(prefixSum[i] >= a[i+1].first) dp[i] = dp[i+1];
+        else dp[i] = i;
+    }
+
+    vector<ll> ans(n);
+
+    for(int i = 0; i < n; i++){
+        ans[a[i].second] = dp[i];
+    }
+    for(auto it : ans){
+        cout << it << " ";
+    }
+    cout << '\n';
+    
+
 }
 
 int main() {

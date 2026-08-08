@@ -29,13 +29,26 @@ const ll INF = 1e18;
 void solve() {
     ll n;
     cin >> n;
-    cout << n << '\n';
+    vector<int> a(n);
+    for(int i = 0; i < n; i++) cin >> a[i];
+
+    sort(all(a));
+    ll X = 0;
+
+    for(auto coins : a){
+        if(coins > X + 1){
+            cout << X + 1 << '\n';
+            return;
+        }
+        X += coins;
+    }
+
+    cout << X + 1 << '\n';
 }
 
 int main() {
     fast_io;
     int t = 1;
-    cin >> t;
     while (t--) solve();
     return 0;
 }

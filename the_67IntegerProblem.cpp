@@ -27,9 +27,20 @@ const ll INF = 1e18;
 #define all(x) (x).begin(), (x).end()
 
 void solve() {
-    ll n;
-    cin >> n;
-    cout << n << '\n';
+    ll n = 7;
+    ll arr[n];
+    for(int i = 0; i < n; i++){
+        cin >> arr[i];
+    }
+    sort(arr, arr + n);
+    ll summ = 0;
+    for(int i = 0; i < n-1; i++){
+        arr[i] *= (-1);
+        summ += arr[i];
+    }
+    summ += arr[n-1];
+    cout<< summ <<endl;
+    
 }
 
 int main() {

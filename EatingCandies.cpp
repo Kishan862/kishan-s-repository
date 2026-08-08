@@ -29,7 +29,25 @@ const ll INF = 1e18;
 void solve() {
     ll n;
     cin >> n;
-    cout << n << '\n';
+    vector<ll> weights(n);
+    for(int i = 0; i < n; i++){
+        cin >> weights[i];
+    }
+    ll l = 0, r = n-1;
+    ll LSum = 0, RSum = 0;
+    ll ans  = 0;
+    while(l <= r){
+        if(LSum <= RSum){
+            LSum += weights[l++];
+        }
+        else{
+            RSum += weights[r--];
+        }
+        if(LSum == RSum){
+            ans = l + n - 1 - r;
+        }
+    }
+    cout << ans << '\n';
 }
 
 int main() {

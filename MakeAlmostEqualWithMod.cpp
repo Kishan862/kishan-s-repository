@@ -29,7 +29,25 @@ const ll INF = 1e18;
 void solve() {
     ll n;
     cin >> n;
-    cout << n << '\n';
+    vector<ll> a(n);
+    for(int i = 0; i < n; i++){  
+        cin >> a[i];
+    }
+   
+    for(int i = 1; i < 61; i++){
+        ll k = 1LL << i;
+        set<ll> st;
+        for(auto it : a){
+            it %= k;
+            st.insert(it);
+        }
+
+        if(st.size() == 2){
+            cout << k << '\n';
+            return;
+        }
+
+    }
 }
 
 int main() {

@@ -27,9 +27,40 @@ const ll INF = 1e18;
 #define all(x) (x).begin(), (x).end()
 
 void solve() {
-    ll n;
-    cin >> n;
-    cout << n << '\n';
+    int n, x;
+    cin >> n >> x;
+
+    vector<int> pre[3];
+
+    for(int i = 0; i < 3; i++){
+        int s = 0;
+        pre[i].pb(s);
+        for(int j = 0; j < n; j++){
+            int a;
+            cin >> a;
+            if((s | a) != s){
+                s |= a;
+                pre[i].pb(s);
+            }
+        }
+    }
+
+    bool ans = false;
+
+    for(auto A : pre[0]){
+        for(auto B : pre[1]){
+            for(auto C : pre[2]){
+                if((A | B | C) == x) ans = true;
+            }
+        }
+    }
+    if(ans){
+        cout << "YES" << '\n';
+    }
+    else{
+        cout << "NO" << '\n';
+    }
+    
 }
 
 int main() {

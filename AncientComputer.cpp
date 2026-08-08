@@ -27,9 +27,42 @@ const ll INF = 1e18;
 #define all(x) (x).begin(), (x).end()
 
 void solve() {
-    ll n;
-    cin >> n;
-    cout << n << '\n';
+    ll a, b;
+    cin >> a >> b;
+    
+    if(a == b){
+        cout << 0 << '\n';
+        return;
+    }
+
+
+    ll tempA = a;
+    while(tempA % 2 == 0 ){
+        tempA /= 2;
+   
+    }
+
+    ll tempB = b;
+    while(tempB % 2 == 0 ){
+        tempB /= 2;
+    }
+
+    if (tempA != tempB) {
+        cout << -1 << '\n';
+        return;
+    }else{
+        a /= tempA;
+        b /= tempB;
+    }
+
+    a = log2(a);
+    b = log2(b);
+
+    ll ans = ceil(abs(a-b)/3.0);
+    cout << ans << '\n';
+
+    
+
 }
 
 int main() {

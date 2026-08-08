@@ -26,16 +26,27 @@ const ll INF = 1e18;
 #define pb push_back
 #define all(x) (x).begin(), (x).end()
 
-void solve() {
-    ll n;
-    cin >> n;
-    cout << n << '\n';
-}
-
 int main() {
     fast_io;
-    int t = 1;
-    cin >> t;
-    while (t--) solve();
+    ll n, d;
+    cin >> n >> d;
+    vector<ll> power(n);
+    for(int i = 0; i < n; i++) cin >> power[i];
+    sort(power.begin(), power.end());
+    ll l = 0, r = n-1, i = 1;
+    ll cnt = 0;
+    while(l <= r){
+        if((i * power[r]) > d){
+            cnt++;
+            r--;
+            i = 1;
+        }
+        else{
+            i++;
+            l++;
+        }
+    }
+    cout << cnt << endl;
+
     return 0;
 }

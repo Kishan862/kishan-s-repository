@@ -29,13 +29,24 @@ const ll INF = 1e18;
 void solve() {
     ll n;
     cin >> n;
-    cout << n << '\n';
+    
+    string s;
+    cin >> s;
+
+    for(int i = 0; i < n-1; i++){
+        if(s[i] > s[i+1]){
+            cout << "YES" << endl;
+            cout << i+1 << " " << i+2 <<  endl;
+            return;
+        }
+    }
+
+    cout << "NO" << endl;
 }
 
 int main() {
     fast_io;
     int t = 1;
-    cin >> t;
     while (t--) solve();
     return 0;
 }

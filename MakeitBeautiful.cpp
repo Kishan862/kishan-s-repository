@@ -29,7 +29,38 @@ const ll INF = 1e18;
 void solve() {
     ll n;
     cin >> n;
-    cout << n << '\n';
+    vector<int> a(n), ans;
+    for(int i = 0; i < n; i++){
+        cin >> a[i];
+    }
+    int x = a[0], cnt = 1;
+    for(int i = 1; i < n; i++){
+        if(a[i] == x) cnt++;
+    }
+    if(cnt == n){
+        cout << "NO" << '\n';
+        return;
+    }
+    sort(all(a));
+    int l = 0, r = n-1;
+    while (l <= r){
+        if(l == r){
+            ans.pb(a[l]);
+        }
+        else{
+            ans.pb(a[l]);
+            ans.pb(a[r]);
+        }
+        l++;
+        r--;
+    }
+    cout << "YES" << '\n';
+    for(auto it : ans){
+        cout << it << " ";
+    }
+    cout << '\n';
+    
+
 }
 
 int main() {

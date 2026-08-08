@@ -27,9 +27,24 @@ const ll INF = 1e18;
 #define all(x) (x).begin(), (x).end()
 
 void solve() {
-    ll n;
-    cin >> n;
-    cout << n << '\n';
+    string s;
+
+    cin >> s;
+
+    int p0 = s.find('0');
+    int p1 = s.find('1');
+
+    if (p0 < p1) {
+        s.erase(p0, 1);
+        p1--;              
+        s.erase(p1, 1);
+    } else {
+       s.erase(p1, 1);
+       p0--;    
+       s.erase(p0, 1);
+    }
+
+    cout << s << '\n';
 }
 
 int main() {

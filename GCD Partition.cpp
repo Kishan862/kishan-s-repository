@@ -25,11 +25,30 @@ const ll INF = 1e18;
 #define fast_io ios::sync_with_stdio(false); cin.tie(NULL);
 #define pb push_back
 #define all(x) (x).begin(), (x).end()
-
+ll gcd(ll a, ll b){
+    if(b == 0) return a;
+    return gcd(b, a % b);
+}
 void solve() {
     ll n;
     cin >> n;
-    cout << n << '\n';
+    
+    ll total_sum = 0;
+    vector<ll> a(n);
+
+    for(int i = 0; i < n; i++){
+        cin >> a[i];
+        total_sum += a[i];
+    }
+
+    ll sum = 0;
+    ll ans = 0;
+    for(int i = 0; i < n-1; i++){
+        sum += a[i];
+        ans = max(ans, gcd(sum, total_sum-sum));
+    }
+
+    cout << ans << '\n';
 }
 
 int main() {

@@ -29,7 +29,17 @@ const ll INF = 1e18;
 void solve() {
     ll n;
     cin >> n;
-    cout << n << '\n';
+    vector<ll> a(n);
+    ll noZero = 0, noOne = 0;
+    for(int i = 0; i < n; i++){
+        cin >> a[i];
+        if(a[i] == 0) noZero++;
+        else if(a[i] == 1) noOne++;
+    }
+    ll ans = noOne * (1LL << noZero);
+
+    cout << ans << '\n';
+
 }
 
 int main() {

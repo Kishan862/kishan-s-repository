@@ -29,7 +29,16 @@ const ll INF = 1e18;
 void solve() {
     ll n;
     cin >> n;
-    cout << n << '\n';
+    vector<int> a(n), b(n);
+    for(int i = 0; i < n; i++) cin >> a[i];
+    int s = n+1;
+    for(int i = 0; i < n; i++){
+        b[i] = s - a[i];
+    }
+    for(auto it : b){
+        cout << it << " ";
+    }
+    cout << '\n';
 }
 
 int main() {

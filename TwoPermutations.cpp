@@ -27,9 +27,14 @@ const ll INF = 1e18;
 #define all(x) (x).begin(), (x).end()
 
 void solve() {
-    ll n;
-    cin >> n;
-    cout << n << '\n';
+    ll n, a, b;
+    cin >> n >> a >> b;
+    if(n == a && a == b || (a + b) < n-1){
+        cout << "YES" << '\n';
+        return;
+    }
+    cout << "NO" << '\n';
+
 }
 
 int main() {

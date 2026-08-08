@@ -27,9 +27,15 @@ const ll INF = 1e18;
 #define all(x) (x).begin(), (x).end()
 
 void solve() {
-    ll n;
-    cin >> n;
-    cout << n << '\n';
+    ll x;
+    cin >> x;
+    int p = 1;
+    int temp = x;
+    while(temp){
+        p *= 10;
+        temp /= 10;
+    }7
+    cout << p+1 << '\n';
 }
 
 int main() {

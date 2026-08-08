@@ -29,7 +29,24 @@ const ll INF = 1e18;
 void solve() {
     ll n;
     cin >> n;
-    cout << n << '\n';
+    vector<ll> b(n);
+    for(int i = 0; i < n; i++) cin >> b[i];
+    vector<ll> ans;
+    ans.pb(b[0]);
+    for(int i = 1; i < n; i++){
+        if(b[i] >= b[i-1]){
+            ans.pb(b[i]);
+        }
+        else{
+            ans.pb(b[i]);
+            ans.pb(b[i]);
+        }
+    }
+    cout << ans.size() << '\n';
+    for(auto x : ans){
+        cout << x << " "; 
+    }
+    cout << '\n';
 }
 
 int main() {

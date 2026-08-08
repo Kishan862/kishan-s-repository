@@ -29,7 +29,42 @@ const ll INF = 1e18;
 void solve() {
     ll n;
     cin >> n;
-    cout << n << '\n';
+    
+    vector<ll> a(n), a1(n);
+    for(int i = 0; i < n; i++) cin >> a[i];
+    for(int i = 0; i < n; i++) cin >> a1[i];
+
+    int l = -1;
+    for(int i = 0; i < n; i++){
+        if(a[i] != a1[i]){
+            l = i;
+            break;
+        }
+    }
+    if(l == -1){
+        cout << 1 << " " << n << '\n';
+        return;
+    }
+    int r;
+    for(int i = n-1; i >= 0; i--){
+        if(a[i] != a1[i]){
+            r = i;
+            break;
+        }
+    }
+    while (l > 0 && a[l - 1] <= a1[l]) {
+         l--;
+    }
+
+    while (r + 1 < n && a[r + 1] >= a[r]) {
+        r++;
+    }
+
+    cout << l + 1 << " " << r + 1 << '\n';
+
+   
+
+
 }
 
 int main() {

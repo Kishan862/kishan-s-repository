@@ -27,9 +27,23 @@ const ll INF = 1e18;
 #define all(x) (x).begin(), (x).end()
 
 void solve() {
-    ll n;
-    cin >> n;
-    cout << n << '\n';
+    ll n, k;
+    cin >> n >> k;
+    vector<ll> a(n), b(n);
+    for(int i = 0; i < n; i++) cin >> a[i];
+
+    for(int i = 0; i < n; i++) cin >> b[i];
+
+    ll sum = 0, maxi = 0, ans = 0;
+
+    for(int i = 0; i < min(n, k); i++){
+        sum += a[i];
+        maxi = max(maxi, b[i]);
+        ans = max(ans, sum + maxi*(k-i-1));
+    }
+
+    cout << ans << endl;
+
 }
 
 int main() {

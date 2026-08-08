@@ -29,13 +29,24 @@ const ll INF = 1e18;
 void solve() {
     ll n;
     cin >> n;
-    cout << n << '\n';
+    vector<pair<ll, ll>> events;
+    for(int i = 0; i < n; i++){
+        ll a, b;
+        cin >> a >> b;
+        events.pb({a, 1});
+        events.pb({b, -1});
+    }
+    sort(all(events));
+    ll current = 0, ans = 0;
+    for(auto event : events){
+        current += event.second;
+        ans = max(current, ans);
+    }
+    cout << ans << '\n';
 }
 
 int main() {
     fast_io;
-    int t = 1;
-    cin >> t;
-    while (t--) solve();
+    solve();
     return 0;
 }

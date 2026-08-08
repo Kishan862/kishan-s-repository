@@ -29,7 +29,18 @@ const ll INF = 1e18;
 void solve() {
     ll n;
     cin >> n;
-    cout << n << '\n';
+    vector<ll> nums(n);
+    for(int i = 0; i < n; i++){
+        cin >> nums[i];
+    }
+    ll max_xorr = 0;
+    for(int i = 0; i < n; i++){
+        for(int j = i; j < n; j++){
+            ll xorr = nums[i] ^ nums[j];
+            max_xorr = max(xorr, max_xorr);
+        }
+    }
+    cout << max_xorr << endl;
 }
 
 int main() {

@@ -29,7 +29,19 @@ const ll INF = 1e18;
 void solve() {
     ll n;
     cin >> n;
-    cout << n << '\n';
+    set<int> b;
+    for(int i = 0; i < n; i++) {
+        int x;
+        cin >> x;
+        b.insert(x);
+    }
+
+    if(b.size() == n){
+        cout << "NO" << '\n';
+    }
+    else{
+        cout << "YES" << '\n';
+    }
 }
 
 int main() {

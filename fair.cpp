@@ -25,11 +25,22 @@ const ll INF = 1e18;
 #define fast_io ios::sync_with_stdio(false); cin.tie(NULL);
 #define pb push_back
 #define all(x) (x).begin(), (x).end()
-
+bool is_fair(ll x){
+    ll temp = x;
+    while(temp){
+        ll digit = temp % 10;
+        if(digit != 0 && x % digit != 0) return false;
+        temp /= 10;
+    }
+    return true;
+}
 void solve() {
     ll n;
     cin >> n;
-    cout << n << '\n';
+    while(!is_fair(n)){
+        n++;
+    }
+    cout << n << endl;
 }
 
 int main() {

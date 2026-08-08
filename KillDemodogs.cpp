@@ -29,7 +29,16 @@ const ll INF = 1e18;
 void solve() {
     ll n;
     cin >> n;
-    cout << n << '\n';
+    const long long MOD = 1e9 + 7;
+    const long long inv6 = 166666668;
+
+    long long ans = n % MOD;
+    ans = ans * ((n + 1) % MOD) % MOD;
+    ans = ans * ((4 * (n % MOD) - 1 + MOD) % MOD) % MOD; 
+    ans = ans * 2022 % MOD;
+    ans = ans * inv6 % MOD;
+
+    cout << ans << '\n';
 }
 
 int main() {

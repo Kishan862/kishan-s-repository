@@ -27,9 +27,31 @@ const ll INF = 1e18;
 #define all(x) (x).begin(), (x).end()
 
 void solve() {
-    ll n;
-    cin >> n;
-    cout << n << '\n';
+    ll n, k;
+    cin >> n >> k;
+    vector<ll> a(n);
+    for(int i = 0; i < n; i++){
+        cin >> a[i];
+    }
+    sort(all(a));
+
+    vector<ll> pre(n);
+    pre[0] = a[0];
+    for(int i = 1; i < n; i++){
+        pre[i] = pre[i-1] + a[i];
+    }
+    ll ans = pre[n-k-1];
+    ll x = k-1;
+    while(x > -1){
+        int left = 2*(k-x)-1, right = n-x-1;
+        ll curr = pre[right] - pre[left];
+        ans = max(ans, curr);
+        x--;
+    }
+
+    cout << ans << '\n';
+
+    
 }
 
 int main() {

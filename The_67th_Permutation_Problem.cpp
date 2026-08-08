@@ -29,7 +29,21 @@ const ll INF = 1e18;
 void solve() {
     ll n;
     cin >> n;
-    cout << n << '\n';
+    vector<ll> vec;
+    ll x = 3*n;
+    ll y = 1;
+    ll z = 0;
+    for(int i = 1 ; i <= n ; i++){
+        vec.push_back(i);
+        vec.push_back(x-y);
+        vec.push_back(x-z);
+        y += 2;
+        z += 2;
+    }
+    for(ll x : vec){
+        cout<<x<<" ";
+    }
+    cout<<endl;
 }
 
 int main() {

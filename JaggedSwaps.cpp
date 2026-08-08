@@ -29,7 +29,16 @@ const ll INF = 1e18;
 void solve() {
     ll n;
     cin >> n;
-    cout << n << '\n';
+    vector<int> a(n);
+    for(int i = 0; i < n; i++){
+        cin >> a[i];
+    }
+    if(a[0] == 1){
+        cout << "YES" << endl;
+        return;
+    }
+    cout << "NO" << endl;
+   
 }
 
 int main() {

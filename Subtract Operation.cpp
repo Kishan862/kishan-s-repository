@@ -27,9 +27,25 @@ const ll INF = 1e18;
 #define all(x) (x).begin(), (x).end()
 
 void solve() {
-    ll n;
-    cin >> n;
-    cout << n << '\n';
+    ll n , k;
+    cin >> n >> k;
+    
+    vector<int> a(n);
+    for(int i = 0; i < n; i++) cin >> a[i];
+
+    map<int, bool> mp;
+    for(auto x : a){
+        mp[x] = true;
+    }
+
+    for(int i = 0; i < n; i++){
+        if(mp.find(a[i]-k) != mp.end()){
+            cout << "YES" << '\n';
+            return;
+        }
+    }
+
+    cout << "NO" << '\n';
 }
 
 int main() {

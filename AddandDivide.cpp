@@ -27,9 +27,26 @@ const ll INF = 1e18;
 #define all(x) (x).begin(), (x).end()
 
 void solve() {
-    ll n;
-    cin >> n;
-    cout << n << '\n';
+    ll a, b;
+    cin >> a >> b;
+    
+    int ans = INT_MAX;
+
+    for(int add = 0; add < 32; add++){
+        int op = add;
+        int newB = b + add;
+        if(newB == 1) continue;
+        int a1 = a;
+        while(a1 > 0){
+            a1 /= newB;
+            op++;
+        }
+
+        ans = min(ans, op);
+    }
+
+    cout << ans << '\n';
+   
 }
 
 int main() {

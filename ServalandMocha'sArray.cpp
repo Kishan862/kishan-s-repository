@@ -25,11 +25,26 @@ const ll INF = 1e18;
 #define fast_io ios::sync_with_stdio(false); cin.tie(NULL);
 #define pb push_back
 #define all(x) (x).begin(), (x).end()
-
+int gcd(int a, int b){
+    if(b == 0) return a;
+    return gcd(b, a % b);
+}
 void solve() {
     ll n;
     cin >> n;
-    cout << n << '\n';
+    vector<int> a(n);
+    for(int i = 0; i < n ; i++) cin >> a[i];
+    for(int i = 0; i < n; i++){
+        for(int j = i; j < n; j++){
+            if(gcd(a[i], a[j]) < 3){
+                cout << "YES" << '\n';
+                return;
+            }
+        }
+    }
+    cout << "NO" << '\n';
+                
+
 }
 
 int main() {

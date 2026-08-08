@@ -26,16 +26,25 @@ const ll INF = 1e18;
 #define pb push_back
 #define all(x) (x).begin(), (x).end()
 
-void solve() {
-    ll n;
-    cin >> n;
-    cout << n << '\n';
-}
+
 
 int main() {
     fast_io;
-    int t = 1;
-    cin >> t;
-    while (t--) solve();
+    int n;
+    cin >> n;
+    vector<vector<int>> mexMatrix(n, vector<int>(n));
+
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j <= i; j++){
+            mexMatrix[i][j] = mexMatrix[j][i] =  i ^ j;
+        }
+    }
+
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < n; j++){
+            cout << mexMatrix[i][j] << " ";
+        }
+        cout << '\n';
+    }
     return 0;
 }
