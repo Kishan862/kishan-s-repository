@@ -39,9 +39,46 @@ using vi = vector<int>;
 using vll = vector<ll>;
 
 void solve() {
-    ll n;
-    cin >> n;
-    cout << n << '\n';
+    ll n, k;
+    cin >> n >> k;
+    
+    vi last(k + 1, 0), max1(k + 1, 0), max2(k + 1, 0);
+
+    for(int i = 1; i <= n; i++){
+        int c;
+        cin >> c;
+        int gap = i - last[c] - 1;
+
+        if(gap > max1[c]){
+            max2[c] = max1[c];
+            max1[c] = gap;
+        }
+        else if(gap > max2[c]){
+            max2[c] = gap;
+        }
+
+        last[c] = i;
+    }
+
+    for(int c = 1; c <= k; c++){
+        int gap = n - last[c];
+        if(gap > max1[c]){
+            max2[c] = max1[c];
+            max1[c] = gap;
+        }
+        else if(gap > max2[c]){
+            max2[c] = gap;
+        }
+
+    }
+
+    int ans = n;
+    for(int c = 1; c <= k; c++){
+        int curr = max(max1[c]/2, max2[c]);
+        ans = min(ans, curr);
+    }
+
+    cout << ans << '\n';
 }
 
 int main() {

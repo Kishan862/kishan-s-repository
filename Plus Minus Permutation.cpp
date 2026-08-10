@@ -37,11 +37,25 @@ using pll = pair<ll, ll>;
 
 using vi = vector<int>;
 using vll = vector<ll>;
-
+ll gcd(ll a, ll b){
+    if(b == 0) return a;
+    return gcd(b, a % b);
+}
 void solve() {
-    ll n;
-    cin >> n;
-    cout << n << '\n';
+    ll n, x, y;
+    cin >> n >> x >> y;
+
+    ll lcm_xy = x / gcd(x, y) * y;
+
+    ll both = n / lcm_xy;
+
+    ll plusCnt = n / x - both;
+    ll minusCnt = n / y - both;
+
+    ll plus = plusCnt * (2 * n - plusCnt + 1) / 2;
+    ll minus = minusCnt * (minusCnt + 1) / 2;
+
+    cout << plus - minus << '\n';
 }
 
 int main() {

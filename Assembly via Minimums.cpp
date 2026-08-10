@@ -41,7 +41,29 @@ using vll = vector<ll>;
 void solve() {
     ll n;
     cin >> n;
-    cout << n << '\n';
+    vll a, b;
+    int m = (n * (n-1) / 2);
+    for(int i = 0; i < m; i++){
+        ll x;
+        cin >> x;
+        b.pb(x);
+    }
+
+    sort(all(b));
+
+    int i = 0, j =  n - 1;
+    while(j > 0){
+        a.pb(b[i]);
+        i += j;
+        j--;
+    }
+
+    a.pb(1e9);
+
+    for(auto x : a){
+        cout << x << " ";
+    }
+    cout << '\n';
 }
 
 int main() {
