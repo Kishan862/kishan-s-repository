@@ -42,33 +42,46 @@ void solve() {
     ll n, q;
     cin >> n >> q;
 
-    vector<ll> a(n);
+    vector<ll> a(n), last(n, 0);
     ll sum = 0;
     for(int i = 0; i < n; i++){
         cin >> a[i];
         sum += a[i];
     }
+    ll all = 0, alltime = -1;
+    for(int time = 1; time <= q; time++){
+        ll type;
+        cin >> type;
 
-    while(q--){
-        ll ans;
-        ll t;
-        cin >> t;
-        if(t == 1){
+        if(type == 1){
             ll i, x;
             cin >> i >> x;
-            ans = sum -  + x;
+            i--;
+            ll curr;
+            if(last[i] > alltime) curr = a[i];
+            else curr = all;
 
-            cout << ans << '\n';   
+            sum -= curr;
+            sum += x;
+            a[i] = x;
+            last[i] = time;
+
         }
         else{
             ll x;
             cin >> x;
-            ans = (x * n);
-            sum = ans;
-            x0 = x;
-            cout << ans << '\n';
+
+            all = x;
+            alltime = time;
+
+            sum = n * x;
+
         }
+        cout << sum << '\n';
+
     }
+
+    
 }
 
 int main() {
