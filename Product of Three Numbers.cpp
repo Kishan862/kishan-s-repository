@@ -39,26 +39,29 @@ using vi = vector<int>;
 using vll = vector<ll>;
 
 void solve() {
-    ll x, y;
-    cin >> x >> y;
+    int n;
+    cin >> n;
 
-    
-    long long s = x + y;
-    long long a = 0;
+    vector<int> factors;
 
-    for(int i = 30; i >= 0; i--){
-        if((s >> i) & 1LL){
-            ll cur = a | (1LL << i);
-            if(cur <= x){
-                 a = cur;
-            }
-        }
+    for (int i = 2; i * i <= n; i++) {
+        if (n % i != 0) continue;
 
-        
+        factors.push_back(i);
+        n /= i;
+
+        if (factors.size() == 2)
+            break;
     }
-    
 
-    cout << s << ' ' << x - a << '\n';
+    if (n == 1 || factors.size() < 2 ||
+        n == factors[0] || n == factors[1]) {
+        cout << "NO" << '\n';
+    } 
+    else {
+        cout << "YES" << '\n';
+        cout << factors[0] << " " << factors[1] << " " << n << "\n";
+    }
 }
 
 int main() {
