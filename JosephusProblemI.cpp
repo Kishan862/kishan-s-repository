@@ -36,28 +36,44 @@ class Node {
             next = nullptr;
         }
 };
+void solve() {
+    ll n, k;
+    cin >> n >> k;
+    Node* head = new Node(1);
+    Node* temp = head, *prev, *curr = head;
 
-class LinkedList {
-    private:
-        Node* head;
-        
-    public:
-        LinkedList() {
-            head = nullptr;
+    for (int i = 2; i <= n; i++) {
+        temp->next = new Node(i);
+        temp = temp->next;
+    }
+    prev = temp;
+    temp->next = head;
+
+    vector<int> ans;
+
+    while(curr->next != curr){
+        for(int i = 0; i < k; i++){
+            prev = curr;
+            curr = curr->next;
         }
 
-        void insert(int val);
+        prev->next = curr->next;
+        ans.push_back(curr->data);
+        delete curr;
+        curr = prev->next;
+    }
 
-        void makeCircular();
+    ans.push_back(curr->data);
 
-        void josephusOrder();
+    for(auto it : ans){
+        cout << it << " ";
+    }
 
-        void display();
-};
+    cout << '\n';
 
-void solve() {
-    ll n;
-    cin >> n;
+
+
+
     
 }
 
