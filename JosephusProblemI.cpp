@@ -39,6 +39,7 @@ class Node {
 void solve() {
     ll n, k;
     cin >> n >> k;
+    k %= n;
     Node* head = new Node(1);
     Node* temp = head, *prev, *curr = head;
 
