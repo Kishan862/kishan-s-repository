@@ -39,35 +39,39 @@ using vi = vector<int>;
 using vll = vector<ll>;
 
 void solve() {
-    ll n;
-    cin >> n;
+    ll n, k;
+    cin >> n >> k;
 
-    vi a(n);
+    if((k < n )|| (k == 2 * n)){
+        cout << -1 << '\n';
+        return;
+    }
+    
+    k = 2 * n - 1 - k;
 
-    for(auto &x : a) cin >> x;
+    vector<vector<int>> matrix(n, vector<int>(n));
 
-    int x = INT_MAX, y = INT_MAX;
-
-    int ans = 0;
-    for(auto it : a){
-        if(x > y){
-            swap(x, y);
-        }
-
-        if(it <= x){
-            x = it;
-        }
-        else if(it <= y){
-            y = it;
-        }
-        else{
-            x = it;
-            ans++;
+    int x = 1;
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < n; j++){
+            matrix[i][j] = x;
+            x++;
         }
     }
 
-    cout << ans << '\n';
+    for(int i = 1; i <= k; i++){
+        swap(matrix[0][i], matrix[i][i]);
+    }
+
+    for(auto row : matrix){
+        for(auto x : row){
+            cout << x << " ";
+        }
+        cout << '\n';
+    }
+    
 }
+
 int main() {
     fast_io;
     int t = 1;

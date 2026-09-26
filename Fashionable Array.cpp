@@ -43,31 +43,56 @@ void solve() {
     cin >> n;
 
     vi a(n);
+    vi rem(101, 0);
 
-    for(auto &x : a) cin >> x;
+    int mx = -1;
+    int sum = n;
 
-    int x = INT_MAX, y = INT_MAX;
+    for(auto &x : a){
+        cin >> x;
+        rem[x]++;
+        mx = max(mx, x);
+    }
 
-    int ans = 0;
-    for(auto it : a){
-        if(x > y){
-            swap(x, y);
+    vi ans;
+
+    while(sum > 0){
+        mx = 100;
+
+        while(mx >= 1 && rem[mx] == 0)
+            mx--;
+
+        int f = rem[mx];
+
+        for(int i = 0; i < f; i++){
+            ans.pb(mx);
+            rem[mx]--;
+            sum--;
         }
 
-        if(it <= x){
-            x = it;
-        }
-        else if(it <= y){
-            y = it;
-        }
-        else{
-            x = it;
-            ans++;
+        for(int x = mx - 1; x >= 1; x--){
+            if(rem[x] == 0)
+                continue;
+
+            int take = min(rem[x], f);
+
+            for(int i = 0; i < take; i++){
+                ans.pb(x);
+                rem[x]--;
+                sum--;
+            }
+
+            if(sum == 0)
+                break;
         }
     }
 
-    cout << ans << '\n';
+    for(auto x : ans)
+        cout << x << ' ';
+
+    cout << '\n';
 }
+
 int main() {
     fast_io;
     int t = 1;

@@ -40,34 +40,30 @@ using vll = vector<ll>;
 
 void solve() {
     ll n;
-    cin >> n;
+    char ch;
+    cin >> n >> ch;
+    string s;
+    cin >> s;
 
-    vi a(n);
-
-    for(auto &x : a) cin >> x;
-
-    int x = INT_MAX, y = INT_MAX;
-
+    int l = 0, r = n-1;
     int ans = 0;
-    for(auto it : a){
-        if(x > y){
-            swap(x, y);
+    while(l < r){
+        if(s[l] != s[r]){
+            if((s[l] == ch )|| (s[r] == ch) ){
+                ans++;
+            }
+            else{
+                ans += 2;
+            }
+
         }
 
-        if(it <= x){
-            x = it;
-        }
-        else if(it <= y){
-            y = it;
-        }
-        else{
-            x = it;
-            ans++;
-        }
+        l++;
+        r--;
     }
-
     cout << ans << '\n';
 }
+
 int main() {
     fast_io;
     int t = 1;

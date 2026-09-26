@@ -42,32 +42,33 @@ void solve() {
     ll n;
     cin >> n;
 
-    vi a(n);
+    vi a(n + 1);
+    vi pos(n + 2);
 
-    for(auto &x : a) cin >> x;
+    for(int i = 1; i < n+1; i++){
+        cin >> a[i];
+        pos[a[i]] = i % 2;
+    }
 
-    int x = INT_MAX, y = INT_MAX;
+    int diff = 0;
+    for(int i = n; i >= 1; i--){
 
-    int ans = 0;
-    for(auto it : a){
-        if(x > y){
-            swap(x, y);
-        }
-
-        if(it <= x){
-            x = it;
-        }
-        else if(it <= y){
-            y = it;
+        if(pos[i]){
+            diff--;
         }
         else{
-            x = it;
-            ans++;
+            diff++;
+        }
+
+        if(abs(diff) > 1){
+            cout << "NO" << '\n';
+            return;
         }
     }
 
-    cout << ans << '\n';
+    cout << "YES" << '\n';
 }
+
 int main() {
     fast_io;
     int t = 1;

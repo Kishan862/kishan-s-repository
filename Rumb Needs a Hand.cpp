@@ -43,30 +43,32 @@ void solve() {
     cin >> n;
 
     vi a(n);
+    vi b, c(n, -1);
 
-    for(auto &x : a) cin >> x;
+    for(int i = 0; i < n; i++){
+        cin >> a[i];
 
-    int x = INT_MAX, y = INT_MAX;
-
-    int ans = 0;
-    for(auto it : a){
-        if(x > y){
-            swap(x, y);
-        }
-
-        if(it <= x){
-            x = it;
-        }
-        else if(it <= y){
-            y = it;
+        if(a[i] != (i+1)){
+            b.pb(a[i]);
         }
         else{
-            x = it;
-            ans++;
+            c[i] = a[i];
         }
     }
 
-    cout << ans << '\n';
+    reverse(all(b));
+    int j = 0;
+    for(int i = 0; i < n; i++){
+        if(c[i] == -1){
+            if(b[j] != (i+1)){
+                cout << "NO" << '\n';
+                return;
+            }
+            j++;
+        }
+    }
+
+    cout <<  "YES" << '\n';
 }
 int main() {
     fast_io;

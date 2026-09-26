@@ -43,31 +43,20 @@ void solve() {
     cin >> n;
 
     vi a(n);
-
-    for(auto &x : a) cin >> x;
-
-    int x = INT_MAX, y = INT_MAX;
-
-    int ans = 0;
-    for(auto it : a){
-        if(x > y){
-            swap(x, y);
-        }
-
-        if(it <= x){
-            x = it;
-        }
-        else if(it <= y){
-            y = it;
-        }
-        else{
-            x = it;
-            ans++;
-        }
+    int Z = 0, O = 0;
+    for(auto &x : a){
+        cin >> x;
+        if(x == 0) Z++;
+        else O++;
     }
 
-    cout << ans << '\n';
+    if(Z > O){
+        cout << "Elsie" << '\n';
+        return;
+    }
+    cout << "Bessie" << '\n';
 }
+
 int main() {
     fast_io;
     int t = 1;

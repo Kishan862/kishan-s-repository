@@ -39,35 +39,36 @@ using vi = vector<int>;
 using vll = vector<ll>;
 
 void solve() {
-    ll n;
-    cin >> n;
+    int n, x;
+    cin >> n >> x;
 
     vi a(n);
-
     for(auto &x : a) cin >> x;
 
-    int x = INT_MAX, y = INT_MAX;
+    vi primes;
+    int temp = x;
+    for(int i = 2; i * i <= temp; i++){
+        if(temp % i == 0){
+            primes.pb(i);
 
-    int ans = 0;
-    for(auto it : a){
-        if(x > y){
-            swap(x, y);
+            while(temp % i == 0){
+                temp /= i;
+            }
         }
-
-        if(it <= x){
-            x = it;
+    }
+    if(temp > 1) primes.pb(temp);
+    ll ans = 0;
+    for(auto p : primes){
+        ll sum = 0;
+        for(auto x : a){
+            if(x % p == 0) sum += x;
         }
-        else if(it <= y){
-            y = it;
-        }
-        else{
-            x = it;
-            ans++;
-        }
+        ans = max(ans, sum);
     }
 
     cout << ans << '\n';
 }
+
 int main() {
     fast_io;
     int t = 1;
