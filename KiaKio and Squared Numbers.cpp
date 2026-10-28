@@ -78,7 +78,7 @@ void solve() {
     for(auto it : frq){
         ll x = it.second;
         ll pairs =( x * (x - 1)) / 2;
-        ans = max(ans, pairs);
+        ans += pairs;
 
     }
 
